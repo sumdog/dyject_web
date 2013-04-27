@@ -111,7 +111,8 @@ if __name__ == '__main__':
    config = ctx.get_class('ConfigurationHandler')
 
    print('Client arch is {0}'.format(client.arch))
-   print('Configuration Handler config objects: {0}'.format(config.configs))
+   print('Configuration Handler config objects: {0}'
+     .format(config.configs))
 
    other_a = ctx.get_class('OtherConfig',prototype=True)
    other_b = ctx.get_class('OtherConfig',prototype=True)

@@ -78,7 +78,8 @@ table {
 
 #footer {
     text-align: center;
-    padding: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     background-color: #A4DD9B;
 }
 	
