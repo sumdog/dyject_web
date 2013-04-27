@@ -1,0 +1,105 @@
+/* ============================== */
+/* ! Layout for desktop version   */
+/* ============================== */
+
+body {
+    background-color: #8f6048;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+  
+a, a:visited {
+    color: #8f6048;
+    font-weight:bold;
+}
+
+a:hover {
+    color: #27601b;
+    text-decoration: underline;
+}
+  
+  
+.container {
+    padding: 0px;
+}
+
+p {
+    padding-bottom: 20px;
+}
+
+#banner {
+    text-align: center;
+
+}
+
+#main {
+    background-image: url("../images/paper.png");
+    padding-top: 35px;
+}
+
+#mainTitle {
+    display: none;
+}
+
+  
+h2, h1 {
+    padding-bottom: 20px;
+    padding-top: 15px;
+}
+
+.sh_sourceCode {
+    padding: 25px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+td {
+    border: 1px solid black;
+    padding: 15px;
+}
+
+table {
+    margin: 20px;
+}
+
+#pythocat {
+    width: 250px;
+}
+
+#asf {
+    width: 150px;
+    padding-bottom: 40px;
+}
+
+#pycat_td {
+    padding-left: 80px;
+    border: 0;
+}
+
+#footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #A4DD9B;
+}
+	
+/* ============================= */
+/* ! Layout for mobile version   */
+/* ============================= */
+
+@media handheld, only screen and (max-width: 767px) {
+
+	body {
+	}
+  
+  
+}
+
+
+/* ========================================== */
+/* ! Provide higher res assets for iPhone 4   */
+/* ========================================== */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) { 
+
+
+}
