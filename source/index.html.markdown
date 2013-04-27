@@ -11,7 +11,19 @@ Dyject is a dependency injection module  for Python. Unlike other *enterprise* l
 Installation
 ============
 
-Installation is as simple as...
+The dyject module can be installed using `easy_install`.
+
+<pre class="sh_sourceCode sh_sh">
+easy_install dyject
+</pre>
+
+Alternatively, the latest version of dyject can be [downloaded](https://pypi.python.org/pypi?:action=display&name=dyject) from the Python Package Index and installed using `setup.py`
+
+<pre class="sh_sourceCode sh_sh">
+tar xvfz dyject-0.7.2.tar.gz
+cd dyject-0.7.2
+sudo python setup.py install
+</pre>
 
 
 Configuration
@@ -52,9 +64,9 @@ arch = 'arm'
 </pre> 
 
 
-In the above example, each configuration section corresponds to name for identifying an instance of a class. This name is what will be used within the Python code to retrieve and object. Within each section, there must be either a `class` or `inherit` defined (or both). `class` must be a full path to a Python class. `inherit` must specify the name of another configuration section. If no `class` is defined, dyject will look up the class reference in `inherit` to determine which class to use. It will continue up the inheritence tree defined in the configuration file until a `class` attribute is found.
+In the above example, each configuration section corresponds to name for identifying an instance of a class. This name is what will be used within the Python code to retrieve an object. Within each section, there must be either a `class` or `inherit` attribute (or both) defined. `class` must be a full path to a Python class. `inherit` must specify the name of another configuration section. If no `class` is defined, dyject will look up the class reference in `inherit` to determine which class to use. It will continue up the inheritence tree defined in the configuration file until a `class` attribute is found.
 
-All other attributes are assigned as class members. The right side of the equal sign is interpreted based on standard Python duck typing rules. Therefore, in the `ConfigurationHandler` for example, `system` will be set as a string, `version` will be a float, `supported_versions` will be set as a list and so fourth. 
+All other attributes are assigned as class members. The right side of the equal sign is interpreted based on standard Python typing . Therefore, in the `ConfigurationHandler` example, `system` will be set as a string, `version` will be a float, `supported_versions` will be set as a list and so fourth. 
 
 If a value starts with `class-ref\`, the value given must be the name of another class as defined by its section heading. Braces can be used to define lists of objects. All objects set using `class-ref` are singletons. Therefore, in the above example, the same `ClientConfig` class will be set to both the `default_config` property and the second element in the `configs` list.
 
@@ -101,7 +113,15 @@ if __name__ == '__main__':
    print('Client arch is {0}'.format(client.arch))
    print('Configuration Handler config objects: {0}'.format(config.configs))
 
+   other_a = ctx.get_class('OtherConfig',prototype=True)
+   other_b = ctx.get_class('OtherConfig',prototype=True)
+
+   if id(other_a) != id(other_b):
+     print('Other objects are distinct instances')
+
 </pre>
+
+Notice that the `prototype` argument can be set when calling `get_class`. By default, `get_class` will return a singleton object. By setting `prototype` to `True`, a new instance of the requested object is created that is not stored in dyject's object cache. 
 
 
 Source Code
@@ -121,7 +141,7 @@ Both Source code and example for dyject can be found on Github.
   </tr>
   <tr>
     <td><a href="https://github.com/sumdog/dyject_web">dyject_web</a></td>
-    <td>The source code using by Middleman to generate this website</td>
+    <td>The source code used by <a href="http://middlemanapp.com">Middleman</a> to generate this website</td>
   </tr>
 </table>
 
@@ -150,7 +170,7 @@ Inheritance within the configuration file does not necessarily correlate to inhe
 Issues
 ======
 
-Please submit bugs to the project's issue tracker on Github.
+Please submit bugs to the [project's issue tracker](https://github.com/sumdog/dyject/issues) on Github.
 
 License
 =======
